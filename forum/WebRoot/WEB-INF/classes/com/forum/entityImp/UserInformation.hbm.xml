@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-5 15:12:37 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.forum.entityImp.UserInformation" table="USERINFORMATION">
+        <id name="userId" type="int">
+            <column name="USERID" />
+            <generator class="assigned" />
+        </id>
+        <property name="userSex" type="char">
+            <column name="USERSEX" />
+        </property>
+        <property name="userWeb" type="java.lang.String">
+            <column name="USERWEB" />
+        </property>
+        <property name="userQQ" type="java.lang.String">
+            <column name="USERQQ" />
+        </property>
+        <property name="userMSN" type="java.lang.String">
+            <column name="USERMSN" />
+        </property>
+        <property name="userIntroduce" type="java.lang.String">
+            <column name="USERINTRODUCE" />
+        </property>
+        <property name="userAddress" type="java.lang.String">
+            <column name="USERADDRESS" />
+        </property>
+        <property name="userCom" type="java.lang.String">
+            <column name="USERCOM" />
+        </property>
+    </class>
+</hibernate-mapping>

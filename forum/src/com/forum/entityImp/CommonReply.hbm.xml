@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-28 18:11:39 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.forum.entityImp.CommonReply" table="COMMONREPLY">
+        <id name="replyId" type="int">
+            <column name="REPLYID" />
+            <generator class="increment" />
+        </id>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+        <property name="cTime" type="long" access="field">
+            <column name="CTIME" />
+        </property>
+        <many-to-one name="replyUser" lazy="false" class="com.forum.entityImp.CommonUser" fetch="join">
+            <column name="USERID" />
+        </many-to-one>
+        <many-to-one name="topic" lazy="false" class="com.forum.entityImp.CommonTopic" fetch="join">
+            <column name="TOPICID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

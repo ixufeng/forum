@@ -1,0 +1,59 @@
+html,body{
+	height:100%;
+	width:100;
+}
+.reply-con{
+
+	margin-left: 60px;
+
+}
+.topic-rel{
+	margin-top: 10px;
+	
+}
+
+#topoic-head{
+	min-height:95px;
+}
+.topic-rel>span{
+	font-size:14px;
+	color:#555;
+}
+.reply-time{
+
+	color: #bbb;
+}
+
+#topic-content{	
+	margin-top:-15px;
+	padding-left:30px;
+}
+#topic-content img{
+	max-width:120PX;
+}
+
+.topic-title-con{
+
+	display: inline-block;
+	margin-right: 60px;
+}
+
+.topic-title-con>span{
+	color: #aaa;
+	font-size: 13px;
+}
+.img-topic-avator{
+	width:70px;
+	height:70px;
+	border-radius: 5px;
+	position: absolute;
+	top: 15px;
+	right: 25px;
+}
+.list-group-item{
+	padding-bottom: 5px;
+	min-height:70px;
+}
+.badge{
+	background-color:#BBB;
+}

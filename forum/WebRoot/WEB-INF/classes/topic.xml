@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+	<package name="topic" namespace="/topic" extends="struts-default">
+		<action class="com.forum.topicAction.NewTopic" name="newTopic">
+			<result>/WEB-INF/createTopic.jsp</result>
+		</action>
+		<action name="sendTopic" class="com.forum.topicAction.SendTopic">
+			<result>/WEB-INF/createTopic.jsp</result>
+		</action>
+		<action name="delTopic">
+			
+		</action>
+		<action name="modifyTopic">
+			
+		</action>
+		<!-- 主页 -->
+		<action name="showTopic" class="com.forum.topicAction.ShowTopic">
+			<result>/WEB-INF/homePage.jsp</result>
+		</action>
+		<!-- 评论，回复 -->
+		<action name="replyTopic" method="doReply" class="com.forum.topicAction.ReplyTopic">		
+		</action>
+		<!-- 进入某个话题 -->
+		<action name="topic_*" method="{1}" class="com.forum.topicAction.Topic">
+			<result name="topicdetail">/WEB-INF/topic.jsp</result>
+			<result name="test">/WEB-INF/topic.jsp</result>
+			<result name="nullTopic">				
+			</result>
+		</action>
+	</package>
+
+
+</struts>

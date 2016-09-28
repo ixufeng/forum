@@ -1,0 +1,30 @@
+
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- <property name="show_sql">false</property> -->
+		<property name="connection.username">root</property>
+		<property name="connection.password"></property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql:///forum_v1?useUnicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>		
+		<!-- <property name="show_sql">true</property>
+		<property name="format_sql">true</property> -->
+		<property name="hbm2ddl.auto">update</property>	
+		<property name="javax.persistence.validation.mode">none</property>
+		
+		
+		<!-- 表文件映射 -->
+		<mapping resource="com/forum/entityImp/CommonUser.hbm.xml"/>
+		<mapping resource="com/forum/entityImp/CommonTopic.hbm.xml"/>
+		<mapping resource="com/forum/entityImp/CommonNode.hbm.xml"/>
+		<mapping resource="com/forum/entityImp/CommonTheme.hbm.xml"/>
+		<mapping resource="com/forum/entityImp/CommonReply.hbm.xml"/>
+		<mapping resource="com/forum/entityImp/UserInformation.hbm.xml"/>
+		<mapping resource="com/forum/entityImp/Message.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

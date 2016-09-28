@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <package name="default" namespace="/register" extends="struts-default">
+
+      <action name="registerHandle_*" method="{1}" class="registerAction.RegisterAction">
+      
+      	<result name="register_ok">/WEB-INF/page/loginSuccess.jsp</result>
+      	<result name="code_error">/register.jsp</result>
+      </action>
+      
+      <action name="CheckUser_*" method="{1}" class="registerAction.CheckUser"> 
+          		
+      </action>
+      
+       <action name="index">
+       	<result>/register.jsp</result>
+       </action>  
+         
+    </package>
+</struts>

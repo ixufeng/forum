@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+    <package name="login" namespace="/login" extends="struts-default">
+    	 <action name="index">
+    	 	<result>/signin.jsp</result>
+    	 </action>
+    	 
+    	<action name="*_*" method="{2}" class="com.forum.loginAction.{1}">
+    		
+    		<result type="redirectAction" name="login_success">
+    			<param name="namespace">/topic</param>
+    			<param name="actionName">showTopic</param>
+    		</result>
+    		<result name="login_error">/signin.jsp</result>
+    	</action>
+		<action name="loginOut" class="com.forum.loginAction.LoginOut">
+			<result>/signin.jsp</result>
+		</action>
+    </package>
+</struts>

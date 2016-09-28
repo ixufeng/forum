@@ -1,0 +1,25 @@
+
+#col-right{	
+	background-color: #ccc;
+}
+.box{
+	background-color: #fff;
+}
+#col-left{
+	background-color: #fff;
+}
+.form-grop{
+	
+	padding: 10px;
+}
+
+.text-remind{
+	margin-top: 8px;
+	margin-bottom: 8px;	
+	border-bottom: 1px solid #ccc;
+}
+
+.dropup{
+	margin-bottom: 15px;
+	margin-top: 8px;
+}

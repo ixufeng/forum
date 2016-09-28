@@ -1,0 +1,39 @@
+.mark{
+	display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding-left: 15px;
+    position: relative;
+}
+.mark>span{
+	display: block;
+	width: 8px;
+	height: 8px;
+	position: absolute;
+	top: 4px;
+	left: 2px;
+	background-color: #fff;
+	border-radius: 4px;
+}
+.mark-blue{
+	 background-color: #129;
+}
+.mark-orange{
+	background-color: #f84;
+}
+.mark-info{
+	background-color: #31708f;
+}
+.mark-black{
+	background-color: #000;	
+}
+.mark-grey{
+	background-color: #bbb;
+}

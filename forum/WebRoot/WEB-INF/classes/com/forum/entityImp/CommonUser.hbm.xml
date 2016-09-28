@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-7-28 18:11:39 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.forum.entityImp.CommonUser" table="COMMONUSER">
+        <id name="userId" type="int">
+            <column name="USERID" />
+            <generator class="increment" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="passWord" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="passWord_confirm" type="java.lang.String">
+            <column name="PASSWORD_CONFIRM" />
+        </property>
+        <property name="userEmail" type="java.lang.String">
+            <column name="USEREMAIL" />
+        </property>
+        <property name="userAvatar_sm" type="java.lang.String">
+            <column name="USERAVATAR_SM" />
+        </property>
+        <property name="userAvatar_lg" type="java.lang.String">
+            <column name="USERAVATAR_LG" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="CODE" />
+        </property>
+        <property name="isActive" type="boolean" access="field">
+            <column name="ISACTIVE" />
+        </property>
+        <property name="userPoint" type="int">
+        	<column name="userPoint"></column>
+        </property>
+        <set name="topics" table="COMMONTOPIC" lazy="true" cascade="all">
+            <key>
+                <column name="USERID" />
+            </key>
+            <one-to-many class="com.forum.entityImp.CommonTopic" />
+        </set>
+        <set name="replies" table="COMMONREPLY" lazy="true" cascade="all" >
+            <key>
+                <column name="USERID" />
+            </key>
+            <one-to-many class="com.forum.entityImp.CommonReply" />
+        </set>
+    </class>
+</hibernate-mapping>

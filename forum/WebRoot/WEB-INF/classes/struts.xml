@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    
+     <!-- 上传过程中临时文件存放目录 -->
+    <constant name="struts.multipart.saveDir" value="/temp"></constant>
+	
+	<!-- 全局包 -->
+	<package name="globle" namespace="/" extends="struts-default">
+		<!-- 防止乱码的拦截器x -->
+		<interceptors>
+			<interceptor name="Encoding" class="com.forum.interceptor.CodeInterceptor"></interceptor>
+			
+			<interceptor-stack name="Encode">
+				<interceptor-ref name="Encoding"></interceptor-ref>				
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+			
+		</interceptors>
+		<!-- <default-interceptor-ref name="Encode"></default-interceptor-ref> -->
+		
+		 <action name="LoginActoin_doLogin" method="doLogin" class="com.forum.loginAction.LoginAction">
+			<result name="login_success">/index.jsp</result>
+		</action> 
+		<!-- 图片验证码 -->
+		<action name="imageCode" class="com.forum.globle.SecurityCodeImageAction">  
+            <result name="success" type="stream">  
+               <param name="contentType">image/jpeg</param>  
+               <param name="inputName">imageStream</param>  
+               <param name="bufferSize">2048</param>  
+            </result>  
+		</action>  
+		
+	</package>
+
+  	<include file="login.xml"></include>
+	<include file="register.xml"></include>
+    <include file="topic.xml"></include>
+    <include file="userInfo.xml"></include>
+   	<include file="message.xml"></include>
+</struts>
