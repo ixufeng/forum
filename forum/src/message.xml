@@ -5,6 +5,11 @@
 	
 <struts>
 	<package name="message" namespace="/message" extends="struts-default">
-		<action name="getMessageNum" class="com.forum.topicAction.GetMessage"></action>
+		<action name="getMessageNum" class="com.forum.messageAction.GetMessage"></action>
+		
+		<action name="message_*" method="{1}" class = "com.forum.messageAction.MessageAction">
+			<result name="message_info">/WEB-INF/imessage.jsp</result>
+			
+		</action>
 	</package>
 </struts>

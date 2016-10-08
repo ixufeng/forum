@@ -39,6 +39,7 @@ public class ReplyTopic extends BaseAction  {
 		CommonReply reply = new CommonReply();
 		reply.setContent(this.replyContent);
 		
+		//获取当前用户的id
 		int userId = ((CommonUser)this.httpSession.getAttribute("user")).getUserId();
 		
 		//判断是回复主贴还是评论
@@ -48,14 +49,18 @@ public class ReplyTopic extends BaseAction  {
 			//通知贴主的消息,除非是自己评论自己
 			 
 			NewMessage message = new NewMessage();		
-			message.addReplyMessage(topicId, MessageType.reply, "#", MessageType.replyTitle);
+			String url = "topic/topic_openTopic?topicId=" + topicId;
+			message.addReplyMessage(userId,topicId, MessageType.reply, url);
 		}else{
 			//评论
 			this.replyService.doReply(mainTopicId, userId, reply);
 			//同时给被评论人发送消息
 			NewMessage message = new NewMessage();
-			message.addReplyMessage(mainTopicId, MessageType.reply, "#", MessageType.replyTitle);
-			message.addAtMessage(topicId, MessageType.reply, "#", MessageType.replyTitle);
+			String url = "topic/topic_openTopic?topicId=" + mainTopicId;
+			//发送给发帖人
+			message.addReplyMessage(userId,mainTopicId, MessageType.reply, url);
+			//发送给被@的人
+			message.addAtMessage(userId,topicId, MessageType.at, url, mainTopicId);
 		}
 		
 		

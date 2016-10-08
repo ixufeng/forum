@@ -10,7 +10,8 @@ import com.forum.tools.TimeStamp;
 public class Message {
 	private int id;
 	private int userId;  //这条消息指向的用户
-	private int topicId;
+	private int replyUserId; //回复人
+	private int topicId; //消息相关的id
 	private String messageTitle; //消息头，用户通过title来预览消息
 	private int messageType;    //消息的类型（系统消息，回复消息，评论消息）
 	private String messageUrl; //用户可以通过此链接来查看消息
@@ -67,6 +68,12 @@ public class Message {
 	}
 	public void setTopicId(int topicId) {
 		this.topicId = topicId;
+	}
+	public int getReplyUserId() {
+		return replyUserId;
+	}
+	public void setReplyUserId(int replyUserId) {
+		this.replyUserId = replyUserId;
 	}
 	
 

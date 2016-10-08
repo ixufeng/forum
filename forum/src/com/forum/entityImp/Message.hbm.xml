@@ -11,6 +11,9 @@
         <property name="userId" type="int">
             <column name="USERID" />           
         </property>
+        <property name="replyUserId" type="int">
+        	<column name="REPLYUSERID"></column>
+        </property>
         <property name="topicId">
         	<column name="TOPICID"></column>
         </property>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.hibernate.Session;
 
 import com.forum.entityImp.Message;
+import com.forum.entityImp.MessageShow;
 
 /**
  * 处理用户的信息
@@ -34,36 +35,54 @@ public class MessageDao {
 		
 		return MesList;
 	}
+	
+	
+	
 	/**
 	 * 添加一条消息
 	 * @param msg
 	 */
 	public void addMessage(Message msg){
 		
-		Session session = MySqlSessionFactory.getSession();
+		Session session = MySqlSessionFactory.getSession();	
 		session.save(msg);		
-		
 		MySqlSessionFactory.releaseResource(session);
 		
 	}
 	
 	/**
-	 * 删除一条消息
-	 * @param msg
+	 * 更新一条消息
 	 */
-	public void delMessage(Message msg){
+	public int readMessage(int id ){
 		
-		Session session = MySqlSessionFactory.getSession();
-		session.save(msg);				
-		MySqlSessionFactory.releaseResource(session);
+		String hql = "update Message set isRead = 1 where id = ?";
+		Object[] params = new Object[]{id};	
+		return query.update(hql, params);
+		
+		
 	}
 
 	/**
-	 *更具消息的id来删除消息
+	 *根据消息的id来删除消息
 	 */
-	public Message delMessageById(int id){
-		Session session = MySqlSessionFactory.getSession();
-		return session.get(Message.class, id);
+	
+	public int delMessageById(int id){
+		
+		String hql = "delete from Message where id = ?";
+		Object[] params = new Object[]{id};
+		return query.update(hql, params);
 		
 	}
+	
+	/**
+	 * 分页获取消息
+	 * @return
+	 */
+	public ArrayList<Message>getMessageByPage(){
+		
+		return null;
+	}
+	
+	
+	
 }

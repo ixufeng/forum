@@ -70,6 +70,13 @@ public class UserSessionQuery {
 		return user;
 
 	}
+	/**
+	 * 修改积分
+	 */
+	public void addPoint(){
+		
+	}
+	
 
 	
 	//释放资源，提交事务

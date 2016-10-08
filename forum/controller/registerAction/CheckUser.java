@@ -13,7 +13,7 @@ public class CheckUser extends BaseAction {
 	
 	public String  checkName(){
 		
-		Long startTime = System.nanoTime();
+		
 		String  nameRes = com.forum.tools.CheckUser.checkUserName(this.userName);
 		try {
 			
@@ -22,8 +22,7 @@ public class CheckUser extends BaseAction {
 						
 			e.printStackTrace();
 		}
-		Long endTime = System.nanoTime();
-		System.out.println("检验用户名花费：" + (endTime - startTime)/1000+"ms");
+	
 		return null;
 	}
 	

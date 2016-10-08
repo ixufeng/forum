@@ -1,4 +1,4 @@
-package com.forum.topicAction;
+package com.forum.messageAction;
 
 import java.io.IOException;
 
@@ -13,6 +13,7 @@ public class GetMessage extends BaseAction {
 	private NewMessage message = new NewMessage();
 	private int id;
 	 
+	
 	@Override
 	public String execute(){
 		
@@ -20,7 +21,7 @@ public class GetMessage extends BaseAction {
 		if(user!=null){
 			if(user.getUserId()==id){
 				
-				int size = message.getNewMessage(id).size();
+				int size = message.getNewMessageNums(id);
 				try {
 					httpResponse.getWriter().write(size+"");
 					
@@ -30,9 +31,7 @@ public class GetMessage extends BaseAction {
 				
 				return null;
 			}
-		}
-		
-		System.out.println("2222");
+		}	
 		try {
 			httpResponse.getWriter().write(0+"");
 		} catch (IOException e) {

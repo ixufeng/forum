@@ -1,0 +1,17 @@
+#title_panel{
+	margin-bottom: 0px;
+}
+
+#col-left{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.imessage-mes{
+	padding-left:30px;
+	
+}
+.imessage-con{
+	display:inline-block;
+	width:85%;
+}

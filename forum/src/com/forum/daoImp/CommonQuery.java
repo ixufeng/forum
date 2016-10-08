@@ -13,9 +13,7 @@ import com.forum.dao.SessionFactoryInterface;
  *
  */
 public class CommonQuery {
-	
-	
-	
+
 	/**
 	 * 根据制定的条件来查找相关的节点
 	 * @param hql
@@ -26,7 +24,8 @@ public class CommonQuery {
 	public List<Object> selectForList(String hql,Object[] params){
 		Session session =MySqlSessionFactory.getSession();
 		Query query = getQuery(hql,params,session);
-		List<Object> tempList = query.list();	
+		List<Object> tempList = query.list();
+		
 		MySqlSessionFactory.releaseResource(session);
 		return tempList;
 	}

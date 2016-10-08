@@ -14,7 +14,7 @@
 	                <table class="table">
 	                    <tr>
 
-	                        <td><a href="#" class="link">未读消息</a></td>
+	                        <td><a href="message/message_getNewMessage" class="link">未读消息</a></td>
 	                        <td><span id="newMessageNum">0</span></td>
 	                    </tr>
 	                    <tr>

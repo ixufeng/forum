@@ -21,7 +21,7 @@ public class CheckUser {
 	//违法用户名或者防止重复
 	public static String  checkUserName(String userName){
 		
-		if(userName.length()<4){
+		if(userName.length()<2){
 			return Message.nameShort;
 		}else if(userName.length()>20){
 			return Message.nameLong;

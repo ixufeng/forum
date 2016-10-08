@@ -20,7 +20,7 @@
             		
             		</div>
             		
-            	</div>     	  
+            	</div>      	  
                <ul id="message-ul">
 	               <s:iterator value="#request.list" var="showTopic">
 	               		 <li class="message-list">
