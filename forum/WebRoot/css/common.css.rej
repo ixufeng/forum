@@ -1,0 +1,21 @@
+diff a/forum/WebRoot/css/common.css b/forum/WebRoot/css/common.css	(rejected hunks)
+@@ -36,4 +36,18 @@
+ }
+ .mark-grey{
+ 	background-color: #bbb;
++}
++
++.user-avatar-sm {
++    width: 30px;
++    height: 30px;
++    border-radius: 15px;
++    vertical-align: middle;
++ 
++}
++
++.time-sm{
++	color:#bbb;
++	font-size:10px;
++	
+ }
+\ No newline at end of file

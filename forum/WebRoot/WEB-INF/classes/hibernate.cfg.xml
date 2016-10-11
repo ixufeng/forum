@@ -17,7 +17,6 @@
 		<property name="hbm2ddl.auto">update</property>	
 		<property name="javax.persistence.validation.mode">none</property>
 		
-		
 		<!-- 表文件映射 -->
 		<mapping resource="com/forum/entityImp/CommonUser.hbm.xml"/>
 		<mapping resource="com/forum/entityImp/CommonTopic.hbm.xml"/>

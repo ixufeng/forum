@@ -1,7 +1,9 @@
 package com.forum.topicService;
 
 import org.hibernate.Session;
+
 import com.forum.daoImp.MySqlSessionFactory;
+import com.forum.daoImp.ReplyDao;
 import com.forum.entityImp.CommonReply;
 import com.forum.entityImp.CommonTopic;
 import com.forum.entityImp.CommonUser;
@@ -15,6 +17,7 @@ import com.forum.tools.TimeStamp;
 public class ReplyService {
 	
 
+	private ReplyDao dao = new ReplyDao();
 	/**
 	 *	回复一条帖子
 	 * @param topicId
@@ -38,5 +41,12 @@ public class ReplyService {
 		
 		MySqlSessionFactory.releaseResource(session);
 		
+	}
+	/**
+	 * 获取回复数量
+	 */
+	public int getReplyNum(){
+		
+		return dao.getAllNums();
 	}
 }

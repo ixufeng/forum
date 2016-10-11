@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
-<s:bean name="com.forum.tools.TimeStamp" id="Time"/>
+<%@ page import="com.forum.tools.TimeStamp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,7 @@
                         <div class="topic-title-con">
                             <h4><s:property value="#request.topic.title"/></h4>
                             <span>&nbsp;&nbsp;作者：<s:property value="#request.topic.author.userName"/></span>
+                           
                             <span>&nbsp;&nbsp;创作时间：<s:property value="#request.topic.cTime"/></span>
                             <span>&nbsp;&nbsp;访问量：<s:property value="#request.topic.supports"/></span>
                         </div>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+
 import com.forum.daoImp.MySqlSessionFactory;
 import com.forum.daoImp.TopicSessionQuery;
 import com.forum.entityImp.CommonNode;
@@ -29,34 +30,12 @@ public class GetTopicService {
 	 */
 	public ArrayList<TopicShow> getShowTopicByTime(int pageIndex,int pageSize){
 		
-		ArrayList<TopicShow> listShow = new ArrayList<TopicShow>();	
-
-		int beginIndex = (pageIndex-1) * pageSize;
 		
+		int beginIndex = (pageIndex-1) * pageSize;
 		TopicSessionQuery query =new  TopicSessionQuery();		
 		String hql = "from CommonTopic order by ctime desc";
 		List<Object> tempList = query.selectByPage(hql, beginIndex,pageSize);	
-		
-		for(int i =0;i<tempList.size();i++){
-			TopicShow tempShow = new TopicShow();
-			CommonNode tempNode = new CommonNode();
-			CommonTopic tempTopic = new CommonTopic();					
-			tempTopic = (CommonTopic)tempList.get(i);
-			tempTopic.setSupports(tempTopic.getReplies().size());
-			tempNode  = tempTopic.getNode();
-			tempShow.setNode(tempNode);
-			tempShow.setTopic(tempTopic);
-			tempShow.setUser(tempTopic.getAuthor());
-			try{
-				tempShow.setTimePeriod(TimePeriod.getTimePeriod(tempTopic.getcTime()));
-			}catch(Exception e){
-				
-			}
-			
-			listShow.add(tempShow);			
-		}
-		
-		return listShow;
+		return castTopic(tempList);
 	}
 	/**
 	 * 通过id来获取话题
@@ -116,6 +95,51 @@ public class GetTopicService {
 		return query.getTopicsNum();
 	}
 	
+	/**
+	 * 查找用户所有发过的帖子
+	 * @param userId
+	 */
+	public ArrayList<CommonTopic> getTopicsByUserId(int userId){
+		ArrayList<CommonTopic> list = new ArrayList<CommonTopic>();
+		if(this.query==null){
+			this.query = new TopicSessionQuery();
+		}
+		String hql = "from CommonTopic where userId = ?";
+		Object[] params = new Object[]{userId};
+		List<Object> tempList = this.query.select(hql, params);
+		
+		for(Object obj:tempList){
+			
+			list.add((CommonTopic) obj);
+		}
+		return list;
+	}
 	
 	
+	/**
+	 * CommonTopic转ShowTopic
+	 */
+	public ArrayList<TopicShow> castTopic(List<Object> tempList){
+		
+		ArrayList<TopicShow> listShow = new ArrayList<TopicShow>();
+		for(int i =0;i<tempList.size();i++){
+			TopicShow tempShow = new TopicShow();
+			CommonNode tempNode = new CommonNode();
+			CommonTopic tempTopic = new CommonTopic();					
+			tempTopic = (CommonTopic)tempList.get(i);
+			tempTopic.setSupports(tempTopic.getReplies().size());
+			tempNode  = tempTopic.getNode();
+			tempShow.setNode(tempNode);
+			tempShow.setTopic(tempTopic);
+			tempShow.setUser(tempTopic.getAuthor());
+			try{
+				tempShow.setTimePeriod(TimePeriod.getTimePeriod(tempTopic.getcTime()));
+			}catch(Exception e){
+				
+			}
+			
+			listShow.add(tempShow);			
+		}
+		return listShow;
+	}
 }

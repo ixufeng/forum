@@ -56,6 +56,8 @@
 				</ul>
 			</div>
 			<div  id="col-right" class="col-xs-6 col-sm-3 sidebar-offcanvas">
+				
+				<jsp:include page="/WEB-INF/components/userbox_login.jsp"></jsp:include>
 				<select class="form-control">
 					<option >消息筛选</option>
 					<option value="1">未读消息</option>
@@ -63,9 +65,9 @@
 					<option value="">系统消息</option>
 					<option value="">回复消息</option>
 				</select>
+                <jsp:include page="/WEB-INF/components/hotTopicbox.jsp"></jsp:include>
 			</div>
 		</div>
-		
 	</div>
 </body>
 </html>

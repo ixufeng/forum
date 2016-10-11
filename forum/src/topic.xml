@@ -30,6 +30,7 @@
 			<result name="test">/WEB-INF/topic.jsp</result>
 			<result name="nullTopic">				
 			</result>
+			<result name="mytopics">/WEB-INF/myTopic.jsp</result>
 		</action>
 	</package>
 

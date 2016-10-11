@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import com.forum.dao.SessionFactoryInterface;
+import org.junit.Test;
 import com.forum.entityImp.CommonReply;
 import com.forum.entityImp.CommonUser;
 import com.forum.tools.FilePathConfig;
@@ -49,7 +48,7 @@ public class UserSessionQuery {
 	 */
 	public int updateUserAvatar(String fileName,int userId){
 		String lg = FilePathConfig.userAvatar + "/" + fileName;
-		System.out.println("dao曾获取的数据" + lg);
+		
 		String sm = FilePathConfig.userAvatar + "/sm_" + fileName;
 		String hql = "update CommonUser set userAvatar_sm = ? ,userAvatar_lg=? where userId=?";
 		Object[] obj = new Object[]{sm,lg,userId};		
@@ -77,7 +76,17 @@ public class UserSessionQuery {
 		
 	}
 	
-
+	public Long getMemberNum(){
+		
+		String hql = "select count(*) from CommonUser";
+		Object obj = this.common.getObj(hql, null);
+		return obj==null?0:(Long)obj;
+	}
+	
+	@Test
+	public void test(){
+		System.out.println(getMemberNum());
+	}
 	
 	//释放资源，提交事务
 	public void release(){

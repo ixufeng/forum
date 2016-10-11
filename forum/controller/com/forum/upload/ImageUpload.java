@@ -35,19 +35,14 @@ public class ImageUpload extends BaseAction{
 		if(this.httpSession.getAttribute("user")!=null){
 		
 			 CommonUser user = (CommonUser) (httpSession.getAttribute("user"));
+			 
 			 Upload upload = new Upload(user.getUserId());
-			String realPath = ServletActionContext.getServletContext().getRealPath("/img/avatar");
-			System.out.println(realPath);
-				//保存到磁盘
-				boolean bool = upload.uploadImage(file, fileFileName, fileContentType, realPath);
-				
-				if(bool){
+			 
+			 String realPath = ServletActionContext.getServletContext().getRealPath("/img/avatar");
+			System.out.println("path1" + realPath  );
+			//保存到磁盘
+			upload.uploadImage(file, fileFileName, fileContentType, realPath);
 					
-				}else{
-					
-				}
-		}else{
-			
 		}
 		
 		//保存到数据库

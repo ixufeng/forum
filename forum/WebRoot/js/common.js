@@ -9,5 +9,18 @@
 
 })();
 
+//跳转到登陆页面
+function loginin(){
+	window.location.href="/forum/signin.jsp";
+}
+
+//跳转到注册页面
+function loginup(){
+	window.location.href="/forum/register.jsp";
+}
+
+
+
+
 
 

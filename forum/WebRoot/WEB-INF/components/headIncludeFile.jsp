@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" type="text/css" href="/forum/css/offcanvas.css"/>
     <link rel="stylesheet" type="text/css" href="/forum/css/common.css">
     <script type="text/javascript" src="/forum/js/jquery.js"></script>  
+    <script type="text/javascript" src="/forum/js/common.js"></script>
     <script type="text/javascript" src="/forum/js/bootstrap.js"></script>
    	<script type="text/javascript" src="/forum/js/offcanvas.js"></script>
   	

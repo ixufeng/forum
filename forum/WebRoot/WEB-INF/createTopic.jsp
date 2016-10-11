@@ -81,9 +81,8 @@
     			</form>
     		</div>
     		<div id="col-right" class="col-xs-6 col-sm-3 sidebar-offcanvas">
-    			<div class="box">
-    				this is right
-    			</div> 
+    			<jsp:include page="/WEB-INF/components/NewTopicAttention.jsp"></jsp:include>
+    			<jsp:include page="/WEB-INF/components/hotNodebox.jsp"></jsp:include>
     		</div>
     	</div>
     </div>

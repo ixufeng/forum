@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
-
 import com.forum.daoImp.UserSessionQuery;
 
+     
 /**
  * 文件上传1
  * @author xufeng
@@ -27,7 +27,8 @@ public class Upload {
 	 * @return
 	 */
 	public boolean uploadImage(File uploadFile ,String uploadFileFileName,String uploadFileContentType ,String realPath){
-		
+		//realPath = PathConfig.UPLOAD_AVATAR;
+		System.out.println("path2" + realPath);
 		uploadFileFileName = UUID.randomUUID().toString() + uploadFileFileName.substring(uploadFileFileName.lastIndexOf('.'));
 		saveImgToData(uploadFileFileName);
 		//控制图片类型
@@ -35,6 +36,7 @@ public class Upload {
 	                uploadFileContentType.equals("image/png") || uploadFileContentType.equals("image/bmp") ||   
 	                uploadFileContentType.equals("image/x-icon") || uploadFileContentType.equals("image/pjpeg")) {	
             //判断文件是否为空,并且文件不能大于2M  
+			
             if(uploadFile != null && uploadFile.length() < 2097152){    
                 //根据 parent 抽象路径名和 child 路径名字符串创建一个新 File 实例。  
                 File filePath = new File(new File(realPath), uploadFileFileName);    

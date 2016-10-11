@@ -19,7 +19,7 @@ public class NodeService {
 		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();
 		String hql = "from CommonNode";				
 		List<Object> tempList = query.select(hql, null);	
-		System.out.println(tempList.get(0).toString());		
+			
 		for(int i =0;i<tempList.size();i++){			
 			list.add((CommonNode) tempList.get(i));			
 		}
@@ -59,6 +59,37 @@ public class NodeService {
 	 */
 	public void delNode(int id){
 		
+	}
+	/**
+	 * 获取社区节点数量
+	 * 
+	 */
+	public int getNodeNum(){
+			
+		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();
+		String hql = "from CommonNode";	
+		List<Object> tempList = new ArrayList<Object>();
+		tempList = query.select(hql, null);
+		return tempList.size();
+	}
+	
+	/**
+	 * 获取社区所有节点
+	 */
+	public ArrayList<CommonNode> getAllNodes(){
+		
+		ArrayList<CommonNode> list = new ArrayList<CommonNode>();
+		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();
+		String hql = "from CommonNode";	
+		List<Object> tempList = query.select(hql, null);
+		if(tempList!=null){
+			//转化
+			for(Object obj:tempList){
+				list.add((CommonNode) obj);
+			}
+		}
+		
+		return list;
 	}
 }
 

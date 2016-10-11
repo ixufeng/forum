@@ -25,6 +25,8 @@
 		</interceptors>
 		<!-- <default-interceptor-ref name="Encode"></default-interceptor-ref> -->
 		
+		
+		
 		 <action name="LoginActoin_doLogin" method="doLogin" class="com.forum.loginAction.LoginAction">
 			<result name="login_success">/index.jsp</result>
 		</action> 
@@ -36,7 +38,9 @@
                <param name="bufferSize">2048</param>  
             </result>  
 		</action>  
-		
+		<action name="index" method="getAllNodes" class="com.forum.topicAction.NodeAction">
+			<result name="nodes">/index.jsp</result>
+		</action>
 	</package>
 
   	<include file="login.xml"></include>
