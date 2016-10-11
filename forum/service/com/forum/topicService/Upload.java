@@ -28,9 +28,12 @@ public class Upload {
 	 */
 	public boolean uploadImage(File uploadFile ,String uploadFileFileName,String uploadFileContentType ,String realPath){
 		//realPath = PathConfig.UPLOAD_AVATAR;
-		System.out.println("path2" + realPath);
+		
+		//唯一文件名
 		uploadFileFileName = UUID.randomUUID().toString() + uploadFileFileName.substring(uploadFileFileName.lastIndexOf('.'));
 		saveImgToData(uploadFileFileName);
+		
+		
 		//控制图片类型
 		if(uploadFileContentType.equals("image/gif") || uploadFileContentType.equals("image/jpeg") ||   
 	                uploadFileContentType.equals("image/png") || uploadFileContentType.equals("image/bmp") ||   
