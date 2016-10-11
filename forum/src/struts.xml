@@ -9,7 +9,7 @@
     <constant name="struts.devMode" value="true" />
     
      <!-- 上传过程中临时文件存放目录 -->
-    <constant name="struts.multipart.saveDir" value="/temp"></constant>
+    <constant name="struts.multipart.saveDir" value="temp"></constant>
 	
 	<!-- 全局包 -->
 	<package name="globle" namespace="/" extends="struts-default">
