@@ -24,9 +24,7 @@
 			
 		</interceptors>
 		<!-- <default-interceptor-ref name="Encode"></default-interceptor-ref> -->
-		
-		
-		
+				
 		 <action name="LoginActoin_doLogin" method="doLogin" class="com.forum.loginAction.LoginAction">
 			<result name="login_success">/index.jsp</result>
 		</action> 
