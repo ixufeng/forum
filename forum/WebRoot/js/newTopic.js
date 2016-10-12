@@ -16,6 +16,7 @@
 		
 		var text = $("#content").val();	
 		var html = converter.makeHtml(text);
+		html = html.replace(/script/gi,"s cript");
 		$("#show_con").removeClass("hidden").css("margin-top","20px");
 		$("#show_content").html(html);
 		
@@ -28,7 +29,7 @@
 		var title = $("#topicTitle").val();
 		if(title.trim()==""){
 			//默认必须含有标题
-			console.log("kong");			
+					
 			return;
 			
 		}

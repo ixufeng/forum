@@ -53,7 +53,9 @@ public class ReplyTopic extends BaseAction  {
 			message.addReplyMessage(userId,topicId, MessageType.reply, url);
 		}else{//评论
 			
-			//在评论内容中添加 @标志
+			//在评论内容中添加 @标志 ，获取这个人的姓名
+			
+			reply.setContent("@" +replyContent);
 			
 			this.replyService.doReply(mainTopicId, userId, reply);
 			//同时给被评论人发送消息
