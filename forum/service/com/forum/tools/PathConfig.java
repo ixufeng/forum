@@ -21,8 +21,7 @@ public class PathConfig {
 			
 			path = path.substring(0, path.length()-16);
 			
-			return path;
-		
+			return path;	
 		}
 		
 		// 上传头像的存储路径

@@ -38,11 +38,31 @@
 								</div>																
 							</li>
 						</s:if>
-						<!-- 关注提醒 -->
-						<s:elseif test="#showList.type==2">
-						
-						</s:elseif>
+						<!-- @消息 -->
 						<s:elseif test="#showList.type==3">
+							<li class="list-group-item" id="imessage-li">
+								<img class="user-avatar-sm" src="<s:property value='#showList.replyUser.userAvatar_lg'/>"/>
+								<div class="imessage-con">
+									<s:property value="#showList.replyUser.userName"/>
+									<span>在</span>
+									<a href="<s:property value='#showList.url'/>">
+										<strong>【<s:property value="#showList.topicTitle"/>】</strong>
+									</a>
+									<span>中@了你</span>								
+								</div>
+								
+								<div class="imessage-mes">									
+									<span class="time-sm"><s:property value="#showList.time"/></span>
+									<select class="visible-lg visible-md pull-right">
+										<option>--操作--</option>	
+										<option>删除</option>	
+										<option>已读</option>	
+										<option>忽略</option>	
+									</select>
+								</div>																
+							</li>
+						</s:elseif>
+						<s:elseif test="#showList.type==2">
 						
 						
 						</s:elseif>

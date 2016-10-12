@@ -55,14 +55,17 @@ public class NewMessage {
 		//根据回复找出
 		UserSessionQuery userQuery =  new UserSessionQuery();
 		CommonUser user = userQuery.getUserByReplyId(commentId);
+		//
 		CommonTopic topic = new TopicSessionQuery().getTopicById(topicId);
+		
 		Message message = new Message();
-		message.setReplyUserId(replyUserId);
+		message.setReplyUserId(replyUserId);//谁在回复
 		message.setMessageType(type);
-		message.setUserId(user.getUserId());	
+		message.setUserId(user.getUserId());	//回复给谁
 		message.setTopicId(commentId);
-		message.setMessageTitle(topic.getTitle());
+		message.setMessageTitle(topic.getTitle()); //主贴的标题
 		message.setMessageUrl(url);
+		
 		messageDao.addMessage(message);
 		userQuery.release();
 		

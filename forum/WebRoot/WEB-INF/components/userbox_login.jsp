@@ -10,7 +10,10 @@
       <div id="login_colla" class="panel-collapse collapse in">
 	      <div class="panel-body">
 	            <div class="message-right-rect" id="user-content">
-	                <img src="<s:property value='#session.user.userAvatar_lg'/>" class="img-circle img-size center-block img-responsive" id="user-self"/>
+	            	<a href="/forum/userInfo/showInfo.action">
+	            		<img src="<s:property value='#session.user.userAvatar_lg'/>" class="img-circle img-size center-block img-responsive" id="user-self"/>
+	            	</a>
+	                
 	                <input id="userId" class="hidden" value="<s:property value='#session.user.userId'/>"/>
 	                <table class="table">
 	                    <tr>

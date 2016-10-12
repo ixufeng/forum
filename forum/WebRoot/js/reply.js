@@ -1,9 +1,11 @@
 //初始化回复框 //flag 是用来区别是回复主贴还是回复评论
+var _at = "";
 function initReplyBox(th,flag){
-	
+	replyboxReset();
 	if(flag==1){
 		//获取主贴的id
 		var mainId = $("#mainTopic_id").val();
+		_at ="@"+$(th).attr("data") +":";
 		
 		//将id传递给replyBox
 		$("#mainTopicId").val(mainId);
@@ -13,6 +15,7 @@ function initReplyBox(th,flag){
 	
 	//将id传递给replyBox
 	$("#topicId").val(replyId);
+	$("#message-text").val(_at);
 }
 
 /**
@@ -24,7 +27,7 @@ function sendReply(){
 	//获取到了回复帖子的id
 	var topicId = $("#topicId").val();
 	var mainTopicId = $("#mainTopicId").val();
-	console.log(mainTopicId);
+	
 	if(topicId==null){
 		//暂时不做处理
 		return;
@@ -81,6 +84,7 @@ function changeReplyAlert(className,tip){
  * @returns
  */
 function replyboxReset(){
+	_at = "";
 	$("#reply-alert").css("display","none");
 	$("#message-text").val("");
 	

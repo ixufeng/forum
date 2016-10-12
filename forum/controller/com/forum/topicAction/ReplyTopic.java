@@ -19,8 +19,8 @@ public class ReplyTopic extends BaseAction  {
 
 	private static final long serialVersionUID = 1L;
 	private ReplyService replyService;
-	private int topicId;  //回复对象的Id
-	private int mainTopicId = 0; //当回复别人的评论时，才会有值
+	private int topicId;  //回复对象的Id,可能是topicId也可能是replyId
+	private int mainTopicId = 0; //当回复别人的评论时，才会有值,且是topicId
 	private String replyContent;
 	//评论后的结果
 	private String res  = Message.ERROR;
@@ -51,8 +51,10 @@ public class ReplyTopic extends BaseAction  {
 			NewMessage message = new NewMessage();		
 			String url = "topic/topic_openTopic?topicId=" + topicId;
 			message.addReplyMessage(userId,topicId, MessageType.reply, url);
-		}else{
-			//评论
+		}else{//评论
+			
+			//在评论内容中添加 @标志
+			
 			this.replyService.doReply(mainTopicId, userId, reply);
 			//同时给被评论人发送消息
 			NewMessage message = new NewMessage();

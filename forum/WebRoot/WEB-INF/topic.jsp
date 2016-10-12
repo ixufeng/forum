@@ -57,7 +57,7 @@
 								<div class="topic-rel">
 									<span><s:property value="#reply.content"/></span>
 									<input class="hidden" value="<s:property value='#reply.replyId'/>">
-									<button onclick="initReplyBox(this,1);" class="btn  btn-xs btn-link pull-right"
+									<button onclick="initReplyBox(this,1);" data='<s:property value="#reply.replyUser.userName"/>' class="btn  btn-xs btn-link pull-right"
 										data-toggle="modal" data-target="#myModal">
 										<span  class="glyphicon glyphicon-pencil"></span>回复
 									</button>
