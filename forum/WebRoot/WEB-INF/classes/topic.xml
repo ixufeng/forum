@@ -32,7 +32,17 @@
 			</result>
 			<result name="mytopics">/WEB-INF/myTopic.jsp</result>
 		</action>
+		<!-- 新建节点 -->
+		<action name="newNode_*" method="{1}" class="com.forum.topicAction.NewNode">
+			<result name="success">/WEB-INF/page/success.jsp</result>
+			<result name="failure">/WEB-INF/failure.jsp</result>
+			<result name="login">/WEB-INF/createNode.jsp</result>
+					
+		</action>
 	</package>
-
-
+	<package name="ajax" namespace="/ajax" extends="json-default" >
+		<action name="newNode_*" method="{1}" class="com.forum.topicAction.NewNode">
+								
+		</action>
+	</package>
 </struts>

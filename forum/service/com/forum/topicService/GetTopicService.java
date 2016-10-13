@@ -67,6 +67,7 @@ public class GetTopicService {
 		if(this.query==null){
 			this.query = new TopicSessionQuery();
 		}
+		
 		List<Object> tempList = this.query.select(hql, params,num);
 		
 		

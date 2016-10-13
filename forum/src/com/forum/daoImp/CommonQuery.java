@@ -82,4 +82,19 @@ public class CommonQuery {
 		
 		return query;
 	}
+	
+	public Session getSession(){
+		
+		return MySqlSessionFactory.getSession();
+	}
+	
+	/**
+	 * 提供给外部调用
+	 * @param session
+	 */
+	public void release(Session session){
+		MySqlSessionFactory.releaseResource(session);
+	}
+	
+	
 }

@@ -14,12 +14,22 @@
 }
 
 .text-remind{
-	margin-top: 8px;
-	margin-bottom: 8px;	
+	margin-top: 14px;
+	margin-bottom: 20px;	
 	border-bottom: 1px solid #ccc;
+	padding-bottom:6px;
 }
 
 .dropup{
 	margin-bottom: 15px;
 	margin-top: 8px;
+}
+
+#panel-node{
+	display:none;
+}
+
+#node-body{
+	padding-bottom:5px;
+	padding-top:5px;
 }

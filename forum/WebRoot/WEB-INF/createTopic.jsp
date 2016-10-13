@@ -31,7 +31,7 @@
     				</s:else>
     			</s:if>
     			
-    			<form class="form-grop"  method="post" action="topic/sendTopic">
+    			<form class="form-group"  method="post" action="topic/sendTopic">
     				<div class="text-remind">
     					<span class=""><span class="glyphicon glyphicon-text-width"></span>标题</span>
     					<span class="pull-right">60</span>

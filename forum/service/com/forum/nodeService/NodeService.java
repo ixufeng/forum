@@ -1,11 +1,19 @@
 package com.forum.nodeService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.junit.Test;
+
 import com.forum.daoImp.DaoFactory;
+import com.forum.daoImp.NodeDao;
 import com.forum.daoImp.TopicSessionQuery;
 import com.forum.entityImp.CommonNode;
 import com.forum.tools.TimeStamp;
+
+import net.sf.json.JSONObject;
 
 /**
  * node查询类
@@ -13,7 +21,9 @@ import com.forum.tools.TimeStamp;
  *
  */
 public class NodeService {
-
+	
+	private NodeDao dao = new NodeDao();
+	
 	public List<CommonNode> findAllNodes(){
 		List<CommonNode> list = new ArrayList<CommonNode>();		
 		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();
@@ -91,6 +101,51 @@ public class NodeService {
 		
 		return list;
 	}
+	
+	public boolean addNewNode(CommonNode node,int themeId){
+		
+		node.setCtime(TimeStamp.getCTimeStamp());
+		if(dao.addNode(node, themeId)){
+			return true;
+		}
+		
+		return false;
+	}
+	/**
+	 * 添加一个节点
+	 * @param nodeName
+	 * @param nodeTro
+	 * @param nodeAvatar
+	 * @param themeId
+	 * @return
+	 */
+	public boolean addNewNode(String nodeName,String nodeTro,String nodeAvatar,int themeId){
+		
+		
+		CommonNode node = new CommonNode();
+		node.setName(nodeName);
+		node.setCtime(TimeStamp.getCTimeStamp());
+		//node.setAvatar_lg(nodeAvatar);
+		node.setIntroduce(nodeTro);
+		if(dao.addNode(node, themeId)){
+			
+			return true;
+		}
+		return false;
+	}
+	
+	
+	/**
+	 * 查找某个主题下的所有节点
+	 * @param themeId
+	 */
+	
+	public ArrayList<CommonNode> getNodesByThemeId(int themeId){
+		
+		 return dao.getNodesByThemeId(themeId);
+	}
+	
+	
 }
 
 

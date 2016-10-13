@@ -19,7 +19,10 @@ function loginup(){
 	window.location.href="/forum/register.jsp";
 }
 
-
+function goto(addr){
+	
+	window.location.href=addr;
+}
 
 
 

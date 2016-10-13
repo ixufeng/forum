@@ -41,7 +41,11 @@ public class TopicSessionQuery {
 		
 		Session session  = MySqlSessionFactory.getSession();
 		Query query = new CommonQuery().getQuery(hql, params, session);
-			
+		if(num!=-1){
+			query.setFirstResult(0);
+			query.setMaxResults(10);
+		}
+		
 		@SuppressWarnings("unchecked")
 		List<Object> tempList = query.list();
 		MySqlSessionFactory.releaseResource(session);

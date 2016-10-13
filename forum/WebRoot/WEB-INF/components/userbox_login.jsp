@@ -35,7 +35,7 @@
 	                <a href="topic/newTopic" class="btn btn-default btn-link">&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>创作新主题</a>
 	            </div>
 	            <div class="message-right-rect" id="create-node">
-	                <button class="btn btn-xs btn-warning">&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>创作新节点</button>
+	                <button onclick="goto('/forum/topic/newNode_newNode')" class="btn btn-xs btn-warning">&nbsp;&nbsp;<span class="glyphicon glyphicon-pencil"></span>创作新节点</button>
 	            </div>
 	      </div>
       </div>
