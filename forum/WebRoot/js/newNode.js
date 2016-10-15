@@ -1,12 +1,12 @@
-//-newNode--------------------------------------------------------------------------
+
+
 
 function selectTheme(th){
 	var themeId = $(th).val();
-	console.log(themeId);	
-	//$("#panel-node").slideUp();
+	
+	$("#panel-node").slideUp();
 	if(themeId!=-1){
 		$.ajax({
-			
 			
 			url:"/forum/ajax/newNode_getNode",	
 			dataType:"json",
@@ -22,7 +22,7 @@ function selectTheme(th){
 					html +="</span>";
 			
 				}
-				console.log(html);
+			
 				$("#node-body").html(html);
 				$("#panel-node").slideDown();
 			},

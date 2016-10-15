@@ -6,8 +6,7 @@
 	<head>
 	<title>welcome</title>
 	<link  rel="stylesheet" type="text/css" href="/forum/css/newTopic.css"/>
-  	<jsp:include page="/WEB-INF/components/headIncludeFile.jsp"></jsp:include>
-	
+  	<jsp:include page="/WEB-INF/components/headIncludeFile.jsp"></jsp:include>	
 </head>
 <body>
 	<jsp:include page="/WEB-INF/components/header.jsp"></jsp:include>
