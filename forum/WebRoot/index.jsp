@@ -35,8 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 					</s:iterator>
-					
-					
+				
 				</div>
 			</div>
 			<div  id="col-right" class="col-xs-6 col-sm-3 sidebar-offcanvas">
