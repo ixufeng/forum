@@ -44,17 +44,12 @@ public class NodeService {
 		
 	}
 	/**
-	 * 获取当天热节点
+	 * 获取热节点
 	 */
 	public void getHostedNode(){
 		
 		String hql = "from CommonNode order by supports desc";
-		//今天的0点
-		long time1 = TimeStamp.getTodayBeginTime();
-		//今天的24点
-		long time2 = TimeStamp.getTadayEndTime();
 		
-		Long[] params = {time1,time2};
 	}
 	/**
 	 * 添加一个节点
@@ -73,7 +68,7 @@ public class NodeService {
 	/**
 	 * 获取社区节点数量
 	 * 
-	 */
+	 */  
 	public int getNodeNum(){
 			
 		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();

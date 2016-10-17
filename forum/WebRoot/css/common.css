@@ -67,3 +67,14 @@ body,html{
 	color:#aaa;
 }
 
+.node-con{
+	margin-top:5px;
+	padding-top:5px;
+	border-top:1px solid #ff3;
+	height:20px;
+}
+.node-con > .badge{
+	margin:2px;
+	
+}
+

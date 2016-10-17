@@ -21,6 +21,11 @@
 		<action name="showTopic" class="com.forum.topicAction.ShowTopic">
 			<result>/WEB-INF/homePage.jsp</result>
 		</action>
+		<action name="showTopic_*" method="{1}" class="com.forum.topicAction.ShowTopic">
+			<result name="node_topic">/WEB-INF/homePage.jsp</result>
+		</action>
+		
+		
 		<!-- 评论，回复 -->
 		<action name="replyTopic" method="doReply" class="com.forum.topicAction.ReplyTopic">		
 		</action>

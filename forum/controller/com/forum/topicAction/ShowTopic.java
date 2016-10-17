@@ -17,8 +17,8 @@ public class ShowTopic extends BaseAction{
 	
 	private GetTopicService getTopic = new GetTopicService();
 	
-	
 	private List<TopicShow> list = new ArrayList<TopicShow>();
+	private String nodeName;
 	private int pageIndex = 1;//默认值
 	private int pageSize = 10; //默认值
 
@@ -32,8 +32,6 @@ public class ShowTopic extends BaseAction{
 		//获取话题
 		this.list = getTopic.getShowTopicByTime(this.pageIndex,this.pageSize);		
 		
-		
-		
 		//将pageIndex存入session
 		this.httpSession.setAttribute("pageIndex",pageIndex);
 		//论坛话题的总页数
@@ -46,11 +44,35 @@ public class ShowTopic extends BaseAction{
 			}
 			this.httpSession.setAttribute("allTopicNum", num);
 		}
+		
 		return SUCCESS;
 	}
 	
+	/**
+	 * 查找指定节点下的话题
+	 */
+	public String node(){
+		
+		this.list = getTopic.getShowTopicByTime(pageIndex, pageSize, nodeName);
+		//将pageIndex存入session
+		this.httpSession.setAttribute("pageIndex",pageIndex);
+		//论坛话题的总页数
+		if(this.httpSession.getAttribute("allTopicNum")==null){
+			Long num = getTopic.getAllTopicsNum();
+			if(num%pageSize!=0){
+				num = num/pageSize+1;
+			}else{
+				num = num/pageSize;
+			}
+			this.httpSession.setAttribute("allTopicNum", num);
+		}
+		
+		return "node_topic";
+		
+	}
 	
 	
+
 	
 	public int getPageIndex() {
 		return pageIndex;
@@ -78,4 +100,13 @@ public class ShowTopic extends BaseAction{
 		this.list = list;
 	}
 
+	public String getNodeName() {
+		return nodeName;
+	}
+
+	public void setNodeName(String nodeName) {
+		this.nodeName = nodeName;
+	}
+	
+	
 }

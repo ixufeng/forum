@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.junit.Test;
 
 import com.forum.daoImp.MySqlSessionFactory;
+import com.forum.daoImp.NodeDao;
 import com.forum.daoImp.TopicSessionQuery;
 import com.forum.entityImp.CommonNode;
 import com.forum.entityImp.CommonTopic;
@@ -21,7 +23,9 @@ import com.forum.tools.TimeStamp;
 public class GetTopicService {
 
 	
-	TopicSessionQuery query = new TopicSessionQuery();
+	private TopicSessionQuery query = new TopicSessionQuery();
+	private NodeDao nodeDao = new NodeDao();
+	
 	/**
 	 * 根据时间顺序来分页得到最新帖子 
 	 * @param pageIndex
@@ -29,14 +33,42 @@ public class GetTopicService {
 	 * @return
 	 */
 	public ArrayList<TopicShow> getShowTopicByTime(int pageIndex,int pageSize){
-		
-		
+				
 		int beginIndex = (pageIndex-1) * pageSize;
 		TopicSessionQuery query =new  TopicSessionQuery();		
 		String hql = "from CommonTopic order by ctime desc";
-		List<Object> tempList = query.selectByPage(hql, beginIndex,pageSize);	
+		List<Object> tempList = query.selectByPage(hql,null, beginIndex,pageSize);	
 		return castTopic(tempList);
 	}
+	
+	/**
+	 * 方法的重载，查找某个节点下的话题
+	 * @param pageIndex
+	 * @param pageSize
+	 * @param nodeName
+	 * @return
+	 */
+	public ArrayList<TopicShow> getShowTopicByTime(int pageIndex,int pageSize,String nodeName){
+		
+		if(nodeName==null||"".equals(nodeName)){
+			return null;
+		}
+		//先获取此节点
+		CommonNode node = nodeDao.findNodeByName(nodeName);	
+		if(node==null){
+			
+			return null;
+		}
+		Object[] params = new Object[]{node.getNodeId()};
+
+		int beginIndex = (pageIndex-1) * pageSize;
+		TopicSessionQuery query =new  TopicSessionQuery();		
+		String hql = "from CommonTopic where nodeId = ? order by ctime desc";
+		List<Object> tempList = query.selectByPage(hql,params, beginIndex,pageSize);	
+		return castTopic(tempList);
+	}
+		
+	
 	/**
 	 * 通过id来获取话题
 	 */

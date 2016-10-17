@@ -32,8 +32,7 @@ public class NodeDao {
 		}
 		query.release(session);
 		return false;
-		
-		
+	
 	}
 	
 	public void delNode(int nodeId){
@@ -49,13 +48,40 @@ public class NodeDao {
 		return null;
 	}
 	/**
+	 * 通过node名称来过去node
+	 * @param name
+	 * @return
+	 */
+	public CommonNode findNodeByName(String name){
+		
+		String hql = "from CommonNode where name = ?";
+		Object[] params = new Object[]{name};
+		
+		Object obj = query.getObj(hql, params);
+		
+		return obj==null?null:(CommonNode)obj;
+		
+	}
+	
+	/**
 	 * 查找社区所有的节点
 	 * @return
 	 */
 	public ArrayList<CommonNode> getAllNodes(){
+		ArrayList<CommonNode> list = new ArrayList<CommonNode>();
+		String hql = "from CommonNode";
 		
-		return null;
+		List<Object> temp = query.selectForList(hql, null);
+		if(temp!=null){
+			for(Object obj:temp){
+				
+				list.add((CommonNode)obj);
+			}
+		}
+		return list;
 	}
+	
+	
 	/**
 	 * 查找某个主题下的所有节点
 	 * @param themeId

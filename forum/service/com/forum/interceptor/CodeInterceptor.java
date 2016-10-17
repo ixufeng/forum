@@ -26,6 +26,7 @@ public class CodeInterceptor extends AbstractInterceptor {
 	public String intercept(ActionInvocation arg0) throws Exception {
 		
 		ActionContext actionContext = arg0.getInvocationContext();
+		
 		HttpServletRequest request = (HttpServletRequest)actionContext.get(StrutsStatics.HTTP_REQUEST);
 		System.out.println("beginEncoding...");
 

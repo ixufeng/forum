@@ -3,7 +3,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.junit.Test;
 
 import com.forum.entityImp.CommonTopic;
 
@@ -61,9 +60,19 @@ public class TopicSessionQuery {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Object> selectByPage(String hql,int index,int size){
+	public List<Object> selectByPage(String hql,Object[] params,int index,int size){
+		
 		Session session  = MySqlSessionFactory.getSession();	
 		Query query = session.createQuery(hql);
+		
+		//设置参数
+		if(params!=null){
+			for(int i =0;i<params.length;i++){
+				
+				query.setParameter(i, params[i]);
+			}
+		}
+		
 		query.setFirstResult(index);
 		query.setMaxResults(size);
 		List<Object> tempList = query.list();	
