@@ -18,7 +18,8 @@ public class ShowTopic extends BaseAction{
 	private GetTopicService getTopic = new GetTopicService();
 	
 	private List<TopicShow> list = new ArrayList<TopicShow>();
-	private String nodeName;
+	private int nodeId;
+	private String nodeName = "热门";
 	private int pageIndex = 1;//默认值
 	private int pageSize = 10; //默认值
 
@@ -53,7 +54,8 @@ public class ShowTopic extends BaseAction{
 	 */
 	public String node(){
 		
-		this.list = getTopic.getShowTopicByTime(pageIndex, pageSize, nodeName);
+		this.list = getTopic.getShowTopicByTime(pageIndex, pageSize, nodeId);
+		this.nodeName = getTopic.getNodeName();
 		//将pageIndex存入session
 		this.httpSession.setAttribute("pageIndex",pageIndex);
 		//论坛话题的总页数
@@ -99,6 +101,14 @@ public class ShowTopic extends BaseAction{
 	public void setList(List<TopicShow> list) {
 		this.list = list;
 	}
+	
+	public int getNodeId() {
+		return nodeId;
+	}
+
+	public void setNodeId(int nodeId) {
+		this.nodeId = nodeId;
+	}
 
 	public String getNodeName() {
 		return nodeName;
@@ -107,6 +117,9 @@ public class ShowTopic extends BaseAction{
 	public void setNodeName(String nodeName) {
 		this.nodeName = nodeName;
 	}
+
+
+	
 	
 	
 }

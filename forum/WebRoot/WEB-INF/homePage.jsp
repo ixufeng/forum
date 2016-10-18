@@ -16,9 +16,7 @@
             		<div class="panel panel-heading">
             			<strong>最新主题</strong>
             			<div class="node-con">
-            				<span class="badge pull-right">c++</span>
-	            			<span class="badge pull-right">java</span>
-	            			<span class="badge pull-right">python</span>
+            				<span class="badge"><s:property value="#request.nodeName"/></span>	
             			</div>           			
             		</div>
             		<div class="panel panel-body">
@@ -46,7 +44,7 @@
 			                        </div>			                        
 			                    </li>
 			               </s:iterator>              
-		                </ul>           
+		                 </ul>           
             		</div>            		
             	</div>         	   
                	<!-- 分页 -->

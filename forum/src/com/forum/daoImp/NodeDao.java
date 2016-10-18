@@ -44,8 +44,11 @@ public class NodeDao {
 		
 	}
 	
-	public CommonNode findNodeById(){
-		return null;
+	public CommonNode findNodeById(int nodeId){
+		
+		Session session = query.getSession();
+		
+		return session.get(CommonNode.class, nodeId);
 	}
 	/**
 	 * 通过node名称来过去node

@@ -25,7 +25,8 @@ public class GetTopicService {
 	
 	private TopicSessionQuery query = new TopicSessionQuery();
 	private NodeDao nodeDao = new NodeDao();
-	
+	private String nodeName;
+	private int nodeId;
 	/**
 	 * 根据时间顺序来分页得到最新帖子 
 	 * @param pageIndex
@@ -68,6 +69,35 @@ public class GetTopicService {
 		return castTopic(tempList);
 	}
 		
+	/**
+	 * 方法的重载，查找某个节点下的话题
+	 * @param pageIndex
+	 * @param pageSize
+	 * @param nodeName
+	 * @return
+	 */
+	public ArrayList<TopicShow> getShowTopicByTime(int pageIndex,int pageSize,int nodeId){
+		if(nodeId==-1){
+			
+			return null;
+		}
+		//先获取此节点
+		CommonNode node = nodeDao.findNodeById(nodeId);
+		
+		if(node==null){	
+			return null;
+		}
+		this.nodeName = node.getName();
+		Object[] params = new Object[]{node.getNodeId()};
+
+		int beginIndex = (pageIndex-1) * pageSize;
+		TopicSessionQuery query =new  TopicSessionQuery();		
+		String hql = "from CommonTopic where nodeId = ? order by ctime desc";
+		List<Object> tempList = query.selectByPage(hql,params, beginIndex,pageSize);	
+		return castTopic(tempList);
+	}
+	
+	
 	
 	/**
 	 * 通过id来获取话题
@@ -175,4 +205,23 @@ public class GetTopicService {
 		}
 		return listShow;
 	}
+
+	public String getNodeName() {
+		return nodeName;
+	}
+
+	public void setNodeName(String nodeName) {
+		this.nodeName = nodeName;
+	}
+
+	public int getNodeId() {
+		return nodeId;
+	}
+
+	public void setNodeId(int nodeId) {
+		this.nodeId = nodeId;
+	}
+	
+	
+	
 }

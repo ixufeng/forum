@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 
 //@WebFilter("/*")
 public class TestFilter implements Filter {
@@ -21,6 +22,13 @@ public class TestFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
+		HttpServletRequest req = (HttpServletRequest)request;
+		if("get".equalsIgnoreCase(req.getMethod())){
+			
+			System.out.println(req.getRequestURI());
+		}
+		
 		System.out.println("filter");
 		chain.doFilter(request, response);
 	}

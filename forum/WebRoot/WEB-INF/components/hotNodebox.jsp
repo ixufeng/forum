@@ -13,7 +13,7 @@
       <div class="panel-body">
        	<s:iterator value="#request.nodeList" var="node">
        		<span class="badge">
-       			<a href="/forum/topic/showTopic_node?nodeName=<s:property value='#node.name'/>">
+       			<a href="/forum/topic/showTopic_node?nodeId=<s:property value='#node.nodeId'/>">
        				<s:property value="#node.name"/>
        			</a>	
        		</span>
