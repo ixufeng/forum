@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import com.forum.daoImp.MySqlSessionFactory;
 import com.forum.daoImp.NodeDao;
-import com.forum.daoImp.TopicSessionQuery;
+import com.forum.daoImp.TopicDao;
 import com.forum.entityImp.CommonNode;
 import com.forum.entityImp.CommonTopic;
 import com.forum.entityImp.TopicShow;
@@ -23,8 +23,9 @@ import com.forum.tools.TimeStamp;
 public class GetTopicService {
 
 	
-	private TopicSessionQuery query = new TopicSessionQuery();
+	private TopicDao topicDao = new TopicDao();
 	private NodeDao nodeDao = new NodeDao();
+	
 	private String nodeName;
 	private int nodeId;
 	/**
@@ -36,7 +37,7 @@ public class GetTopicService {
 	public ArrayList<TopicShow> getShowTopicByTime(int pageIndex,int pageSize){
 				
 		int beginIndex = (pageIndex-1) * pageSize;
-		TopicSessionQuery query =new  TopicSessionQuery();		
+		TopicDao query =new  TopicDao();		
 		String hql = "from CommonTopic order by ctime desc";
 		List<Object> tempList = query.selectByPage(hql,null, beginIndex,pageSize);	
 		return castTopic(tempList);
@@ -63,7 +64,7 @@ public class GetTopicService {
 		Object[] params = new Object[]{node.getNodeId()};
 
 		int beginIndex = (pageIndex-1) * pageSize;
-		TopicSessionQuery query =new  TopicSessionQuery();		
+		TopicDao query =new  TopicDao();		
 		String hql = "from CommonTopic where nodeId = ? order by ctime desc";
 		List<Object> tempList = query.selectByPage(hql,params, beginIndex,pageSize);	
 		return castTopic(tempList);
@@ -91,7 +92,7 @@ public class GetTopicService {
 		Object[] params = new Object[]{node.getNodeId()};
 
 		int beginIndex = (pageIndex-1) * pageSize;
-		TopicSessionQuery query =new  TopicSessionQuery();		
+		TopicDao query =new  TopicDao();		
 		String hql = "from CommonTopic where nodeId = ? order by ctime desc";
 		List<Object> tempList = query.selectByPage(hql,params, beginIndex,pageSize);	
 		return castTopic(tempList);
@@ -107,7 +108,6 @@ public class GetTopicService {
 		Session session  = 	MySqlSessionFactory.getSession();		
 		CommonTopic topic = session.get(CommonTopic.class, topicId);
 		MySqlSessionFactory.releaseResource(session);
-		
 		return topic;
 	}
 	
@@ -126,11 +126,11 @@ public class GetTopicService {
 		long time2 = TimeStamp.getTadayEndTime();
 		
 		Long[] params = {time1,time2};
-		if(this.query==null){
-			this.query = new TopicSessionQuery();
+		if(this.topicDao==null){
+			this.topicDao = new TopicDao();
 		}
 		
-		List<Object> tempList = this.query.select(hql, params,num);
+		List<Object> tempList = this.topicDao.select(hql, params,num);
 		
 		
 		for(int i =0;i<tempList.size();i++){
@@ -145,7 +145,7 @@ public class GetTopicService {
 	 * 获取最新的帖子
 	 */
 	public void getLastedTopic(int num){
-		if(this.query==null){
+		if(this.topicDao==null){
 			
 		}
 	}
@@ -155,7 +155,7 @@ public class GetTopicService {
 	 */
 	public Long getAllTopicsNum(){
 		
-		return query.getTopicsNum();
+		return topicDao.getTopicsNum();
 	}
 	
 	/**
@@ -164,12 +164,12 @@ public class GetTopicService {
 	 */
 	public ArrayList<CommonTopic> getTopicsByUserId(int userId){
 		ArrayList<CommonTopic> list = new ArrayList<CommonTopic>();
-		if(this.query==null){
-			this.query = new TopicSessionQuery();
+		if(this.topicDao==null){
+			this.topicDao = new TopicDao();
 		}
 		String hql = "from CommonTopic where userId = ?";
 		Object[] params = new Object[]{userId};
-		List<Object> tempList = this.query.select(hql, params);
+		List<Object> tempList = this.topicDao.select(hql, params);
 		
 		for(Object obj:tempList){
 			

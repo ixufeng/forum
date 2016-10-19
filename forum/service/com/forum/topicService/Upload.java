@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
-import com.forum.daoImp.UserSessionQuery;
+import com.forum.daoImp.UserDao;
 
      
 /**
@@ -16,8 +16,8 @@ import com.forum.daoImp.UserSessionQuery;
 public class Upload {
 
 	private int userId;
-	
-	private UserSessionQuery query = null;
+	private String fileUniqueName;
+	private UserDao query = null;
 	public Upload(int userId){
 		
 		this.userId = userId;
@@ -31,9 +31,7 @@ public class Upload {
 		
 		//唯一文件名
 		uploadFileFileName = UUID.randomUUID().toString() + uploadFileFileName.substring(uploadFileFileName.lastIndexOf('.'));
-		saveImgToData(uploadFileFileName);
-		
-		
+		this.fileUniqueName = uploadFileFileName;
 		//控制图片类型
 		if(uploadFileContentType.equals("image/gif") || uploadFileContentType.equals("image/jpeg") ||   
 	                uploadFileContentType.equals("image/png") || uploadFileContentType.equals("image/bmp") ||   
@@ -64,23 +62,28 @@ public class Upload {
 	}
 	
 	/**
-	 * 将图片信息保存到数据库
+	 * 将用户头像的图片信息保存到数据库
 	 */
-	private boolean saveImgToData(String fileName){
+	public boolean saveImgToData(String fileName){
 		
 		if(this.query==null){
 			
-			this.query = new UserSessionQuery();			
+			this.query = new UserDao();			
 		}
 		
 		this.query.updateUserAvatar(fileName, userId);
 		return false;
 	}
 	
-	/**
-	 * 上传多张图片
-	 */
-	public void uploadImages(){
-		
+	
+	
+	
+	public String getFileUniqueName() {
+		return fileUniqueName;
 	}
+	public void setFileUniqueName(String fileUniqueName) {
+		this.fileUniqueName = fileUniqueName;
+	}
+	
+	
 }

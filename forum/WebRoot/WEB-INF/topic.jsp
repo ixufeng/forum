@@ -34,39 +34,69 @@
                 	<div id="topic-content"  class="panel panel-body">
                 		<input class="hidden" id="mainTopic_id" value="<s:property value="#request.topic.topicId"/>">
                 		<s:property value="#request.topic.content" escape="false"/>
+                		<!-- 图片区域 -->
+                		
+                		<div>
+	                		<s:if test="#request.topic.images.size>0">
+	                			<ul id="topic-img">
+	                				<s:iterator value="#request.topic.images" var="image">
+	                					<li>
+	                						<img class="img-responsive" alt="图片" src="<s:property value='#image.imageSrc'/>">
+	                					</li> 
+	                				</s:iterator>
+	                				              				
+                				</ul> 
+	                		
+	                		</s:if>
+                			
+                		</div>
+                		
                 		<button onclick="initReplyBox(this);" class="btn btn-link pull-right" data-toggle="modal" data-target="#myModal">
                 		  <span class="glyphicon glyphicon-pencil"></span>评论
-                		</button>
-                		
+                		</button>              		
                 	</div>
-                	
                 </div>
-            	<!-- 回复的部分 -->
-				<ul class="list-group">
-					<s:iterator status = "st" value="#request.topic.replies" var="reply">
-						<li class="list-group-item"><img class="img-circle pull-left"
-							style="width: 50px; height: 50px; display: inline-block;"
-							src="<s:property value='#reply.replyUser.userAvatar_lg'/>">
-							<div class="reply-con">
-								<div class="reply-title">
-									<span class="label label-default"></span> 
-									<span class="reply-time">&nbsp;&nbsp;<s:property value="#reply.replyUser.userName"/></span> 
-									<span class="reply-time">&nbsp;&nbsp;iphone</span> 
-									<span class="badge pull-right"><s:property value="#st.index+1"/>楼</span>
-								</div>
-								<div class="topic-rel">
-									<span><s:property value="#reply.content"/></span>
-									<input class="hidden" value="<s:property value='#reply.replyId'/>">
-									<button onclick="initReplyBox(this,1);" data='<s:property value="#reply.replyUser.userName"/>' class="btn  btn-xs btn-link pull-right"
-										data-toggle="modal" data-target="#myModal">
-										<span  class="glyphicon glyphicon-pencil"></span>回复
-									</button>
-								</div>
-
-							</div>
-						</li>
-					</s:iterator>
-				</ul>
+                <s:if test="#request.topic.replies.size>0">
+                	 <!-- 回复的部分 -->
+	                <div class="panel panel-default">
+	                	<div class="panel panel-heading">
+	                		<span class="badge">
+	                			回复<s:property value="#request.topic.replies.size"/>
+	                		</span>
+	                		<span class="pull-right font-light"><s:property value="#request.topic.supports"/>次点击</span>
+	                		<span class="pull-right"></span>
+	                	</div>
+	                	<div class="panel panel-body">
+	                		
+							<ul class="list-group">
+								<s:iterator status = "st" value="#request.topic.replies" var="reply">
+									<li class="list-group-item"><img class="img-circle pull-left"
+										style="width: 50px; height: 50px; display: inline-block;"
+										src="<s:property value='#reply.replyUser.userAvatar_lg'/>">
+										<div class="reply-con">
+											<div class="reply-title">
+												<span class="label label-default"></span> 
+												<span class="reply-time">&nbsp;&nbsp;<s:property value="#reply.replyUser.userName"/></span> 
+												<span class="reply-time">&nbsp;&nbsp;iphone</span> 
+												<span class="badge pull-right"><s:property value="#st.index+1"/>楼</span>
+											</div>
+											<div class="topic-rel">
+												<span><s:property value="#reply.content"/></span>
+												<input class="hidden" value="<s:property value='#reply.replyId'/>">
+												<button onclick="initReplyBox(this,1);" data='<s:property value="#reply.replyUser.userName"/>' class="btn  btn-xs btn-link pull-right"
+													data-toggle="modal" data-target="#myModal">
+													<span  class="glyphicon glyphicon-pencil"></span>回复
+												</button>
+											</div>
+			
+										</div>
+									</li>
+								</s:iterator>
+							</ul>
+	                	</div>
+	                </div>      
+                </s:if>
+      	
 			</div>
         	<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="message-container-right">          		
             	<jsp:include page="/WEB-INF/components/hotNodebox.jsp"></jsp:include>

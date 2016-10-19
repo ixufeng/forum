@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.forum.daoImp.DaoFactory;
-import com.forum.daoImp.UserSessionQuery;
+import com.forum.daoImp.UserDao;
 import com.forum.entity.User;
 
 
@@ -64,7 +64,7 @@ public class CheckUser {
 		
 		String[] params = {name};	
 		
-		UserSessionQuery  userQuery = DaoFactory.getInstance().getUserQuery();
+		UserDao  userQuery = DaoFactory.getInstance().getUserQuery();
 		
 		
 		List<Object> list = userQuery.select(hql, params);
@@ -81,7 +81,7 @@ public class CheckUser {
 		
 		String params[] = {email};
 		
-		UserSessionQuery  userQuery = DaoFactory.getInstance().getUserQuery();
+		UserDao  userQuery = DaoFactory.getInstance().getUserQuery();
 		List<Object> list = userQuery.select(hql, params);
 		userQuery.release();
 		if(list.size()>0){

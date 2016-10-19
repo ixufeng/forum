@@ -1,5 +1,7 @@
 package com.forum.topicAction;
 
+import javax.transaction.Synchronization;
+
 import com.forum.entityImp.CommonTopic;
 import com.forum.entityImp.CommonUser;
 import com.forum.globle.BaseAction;
@@ -36,7 +38,14 @@ public class SendTopic extends BaseAction implements ModelDriven<CommonTopic>  {
 				this.sendRes = "请选择节点";				
 				return SUCCESS;				
 			}
-			send.doSend(this.nodeId, topic, id);
+			
+	
+			
+			Object obj = this.httpSession.getAttribute("topicImage");
+			
+			String params = obj==null?null:(String)obj;
+			send.doSend(this.nodeId, topic, id,params);
+			this.httpSession.removeAttribute("topicImage");
 			this.sendRes = "success";
 			
 		}else{
@@ -44,8 +53,8 @@ public class SendTopic extends BaseAction implements ModelDriven<CommonTopic>  {
 			this.sendRes = "尚未登陆，请先登录";
 			return SUCCESS;
 		}
-
-		return SUCCESS;
+  
+		return SUCCESS ;
 	}
 
 	@Override

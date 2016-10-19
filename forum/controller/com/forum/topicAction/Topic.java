@@ -8,6 +8,11 @@ import com.forum.entityImp.TopicShow;
 import com.forum.globle.BaseAction;
 import com.forum.topicService.GetTopicService;
 
+/**
+ * 进入某个主贴 
+ * @author xufeng
+ *
+ */
 public class Topic extends BaseAction {
 
 	private static final long serialVersionUID = 1L;

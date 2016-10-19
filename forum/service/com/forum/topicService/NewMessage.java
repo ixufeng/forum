@@ -3,8 +3,8 @@ package com.forum.topicService;
 import java.util.ArrayList;
 
 import com.forum.daoImp.MessageDao;
-import com.forum.daoImp.TopicSessionQuery;
-import com.forum.daoImp.UserSessionQuery;
+import com.forum.daoImp.TopicDao;
+import com.forum.daoImp.UserDao;
 import com.forum.entityImp.CommonTopic;
 import com.forum.entityImp.CommonUser;
 import com.forum.entityImp.Message;
@@ -19,7 +19,7 @@ import com.forum.tools.TimeStamp;
 public class NewMessage {
 
 	private MessageDao messageDao = new MessageDao();
-	private UserSessionQuery userQuery = new UserSessionQuery();
+	private UserDao userQuery = new UserDao();
 	
 	/**
 	 * 添加回复消息
@@ -31,7 +31,7 @@ public class NewMessage {
 	public void addReplyMessage(int replyUserId,int topicId,int type,String url){
 		
 		//根据话题找出	
-		CommonTopic topic = new TopicSessionQuery().getTopicById(topicId);
+		CommonTopic topic = new TopicDao().getTopicById(topicId);
 		CommonUser user = topic.getAuthor();
 		
 		Message message = new Message();
@@ -53,10 +53,10 @@ public class NewMessage {
 	 */
 	public void addAtMessage(int replyUserId,int commentId,int type,String url ,int topicId){
 		//根据回复找出
-		UserSessionQuery userQuery =  new UserSessionQuery();
+		UserDao userQuery =  new UserDao();
 		CommonUser user = userQuery.getUserByReplyId(commentId);
 		//
-		CommonTopic topic = new TopicSessionQuery().getTopicById(topicId);
+		CommonTopic topic = new TopicDao().getTopicById(topicId);
 		
 		Message message = new Message();
 		message.setReplyUserId(replyUserId);//谁在回复

@@ -1,5 +1,7 @@
 package com.forum.entityImp;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.forum.entity.Topic;
@@ -16,10 +18,11 @@ public class CommonTopic implements Topic {
 	private String content;
 	private Long cTime;  //创建时间 
 	private String url;//访问地址
-	private long supports;
+	private long supports;//点击数
 	private CommonNode node;	
 	private CommonUser author;	
 	private Set<CommonReply> replies = new HashSet<CommonReply>();
+	private List<TopicImage> images = new ArrayList<TopicImage>();
 	private int topicType = 0;  //帖子的类型，默认普普通帖子
 	
 	public CommonTopic() {
@@ -120,6 +123,16 @@ public class CommonTopic implements Topic {
 	public void setAuthor(CommonUser author2) {
 		
 		this.author = author2;
+	}
+
+
+	public List<TopicImage> getImages() {
+		return images;
+	}
+
+
+	public void setImages(List<TopicImage> images) {
+		this.images = images;
 	}
 
 

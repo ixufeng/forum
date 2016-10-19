@@ -39,5 +39,10 @@
             </key>
             <one-to-many class="com.forum.entityImp.CommonReply" />
         </set>
+        <list name="images" table="TOPICIMAGE" lazy="false" cascade="all">
+        	<key column="TOPICID"></key>
+       		<index column="position"></index>
+       		<one-to-many class="com.forum.entityImp.TopicImage"/>
+        </list>
     </class>
 </hibernate-mapping>

@@ -7,5 +7,6 @@ package com.forum.tools;
 public class FilePathConfig {
 	
 	public static final String userAvatar = "/forum/img/avatar";
+	public static final String topicImage = "/forum/img/topic";
 	
 }

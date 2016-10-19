@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="userInfo" namespace="/userInfo" extends="struts-default">
-		<action name="ImageUpload" class="com.forum.upload.ImageUpload">
+		<action name="ImageUpload_*" method="{1}" class="com.forum.upload.ImageUpload">
 			
 		</action>
 		<action name ="showInfo" class="com.forum.upload.UserInfo">

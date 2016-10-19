@@ -1,10 +1,10 @@
 package com.forum.common;
 
-import com.forum.daoImp.UserSessionQuery;
+import com.forum.daoImp.UserDao;
 
 public class Member {
 
-	private UserSessionQuery query = new UserSessionQuery();
+	private UserDao query = new UserDao();
 	/**
 	 * 获取社区成员数量
 	 */

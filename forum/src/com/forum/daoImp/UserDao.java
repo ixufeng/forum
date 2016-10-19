@@ -15,7 +15,7 @@ import com.forum.tools.FilePathConfig;
  * @author xufeng
  *
  */
-public class UserSessionQuery {
+public class UserDao {
 	
 	
 	private CommonQuery common = new CommonQuery();

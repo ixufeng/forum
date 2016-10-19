@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.forum.daoImp.DaoFactory;
 import com.forum.daoImp.NodeDao;
-import com.forum.daoImp.TopicSessionQuery;
+import com.forum.daoImp.TopicDao;
 import com.forum.entityImp.CommonNode;
 import com.forum.tools.TimeStamp;
 
@@ -26,7 +26,7 @@ public class NodeService {
 	
 	public List<CommonNode> findAllNodes(){
 		List<CommonNode> list = new ArrayList<CommonNode>();		
-		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();
+		TopicDao query = DaoFactory.getInstance().getTopicQuery();
 		String hql = "from CommonNode";				
 		List<Object> tempList = query.select(hql, null);	
 			
@@ -71,7 +71,7 @@ public class NodeService {
 	 */  
 	public int getNodeNum(){
 			
-		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();
+		TopicDao query = DaoFactory.getInstance().getTopicQuery();
 		String hql = "from CommonNode";	
 		List<Object> tempList = new ArrayList<Object>();
 		tempList = query.select(hql, null);
@@ -84,7 +84,7 @@ public class NodeService {
 	public ArrayList<CommonNode> getAllNodes(){
 		
 		ArrayList<CommonNode> list = new ArrayList<CommonNode>();
-		TopicSessionQuery query = DaoFactory.getInstance().getTopicQuery();
+		TopicDao query = DaoFactory.getInstance().getTopicQuery();
 		String hql = "from CommonNode";	
 		List<Object> tempList = query.select(hql, null);
 		if(tempList!=null){

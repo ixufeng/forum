@@ -11,7 +11,7 @@
     swf: 'js/Uploader.swf',
     method: 'post',
     // 文件接收服务端。
-    server: '/forum/userInfo/ImageUpload',
+    server: '/forum/userInfo/ImageUpload_avatar',
 
     // 选择文件的按钮。可选。
     // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -30,7 +30,9 @@
 	uploader.on( 'fileQueued', function( file ) {
 		 $("#fileList").find("span").remove();
 		//删除之前的所有文件
-		var $files = uploader.getFiles();		
+		 
+		var $files = uploader.getFiles();
+		
 		for(var i =0;i<$files.length;i++){
 			
 			if($files[i]!==file){
@@ -38,22 +40,21 @@
 			}	
 		}
 
-	var $list = $("#fileList");
-	$("#fileList").find("div").remove();
+		var $list = $("#fileList");
+		$("#fileList").find("div").remove();
 	
 	
-    var $li = $(
+	    var $li = $(
+	
+	            '<div id="' + file.id + '" class="file-item" width="60">' +
+	                '<img class="thumbnail">' +
+	                '<button  class="btn btn-default btn-sm">' +"确认修改" +  '</button>'+              
+	            '</div>'
+	            ),
+	       	$img = $li.find('img');
 
-            '<div id="' + file.id + '" class="file-item" width="60">' +
-                '<img class="thumbnail">' +
-                '<button  class="btn btn-default btn-sm">' +"确认修改" +  '</button>'+
-               
-            '</div>'
-            ),
-       	$img = $li.find('img');
-
-    // $list为容器jQuery实例
-    $list.append( $li );
+	    // $list为容器jQuery实例
+	    $list.append( $li );
 
     // 创建缩略图
     // 如果为非图片文件，可以不用调用此方法。

@@ -22,7 +22,6 @@ public class ShowTopic extends BaseAction{
 	private String nodeName = "热门";
 	private int pageIndex = 1;//默认值
 	private int pageSize = 10; //默认值
-
 	
 	/**
 	 * 默认浏览方式

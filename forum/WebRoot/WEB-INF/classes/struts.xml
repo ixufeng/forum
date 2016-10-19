@@ -12,18 +12,7 @@
     <constant name="struts.multipart.saveDir" value="temp"></constant>
 	
 	<!-- 全局包 -->
-	<package name="globle" namespace="/" extends="struts-default">
-		<!-- 防止乱码的拦截器x -->
-		<interceptors>
-			<interceptor name="Encoding" class="com.forum.interceptor.CodeInterceptor"></interceptor>
-			
-			<interceptor-stack name="Encode">
-				<interceptor-ref name="Encoding"></interceptor-ref>				
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-			</interceptor-stack>
-			
-		</interceptors>
-		<!-- <default-interceptor-ref name="Encode"></default-interceptor-ref> -->
+	<package name="globle" namespace="/" extends="struts-default">		
 				
 		 <action name="LoginActoin_doLogin" method="doLogin" class="com.forum.loginAction.LoginAction">
 			<result name="login_success">/index.jsp</result>

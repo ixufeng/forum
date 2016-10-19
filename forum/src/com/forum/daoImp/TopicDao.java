@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.junit.Test;
 
 import com.forum.entityImp.CommonTopic;
 
@@ -11,7 +12,7 @@ import com.forum.entityImp.CommonTopic;
  * @author xufeng
  *
  */
-public class TopicSessionQuery {
+public class TopicDao {
 
 	private CommonQuery query = new CommonQuery(); 
 	/**
@@ -100,6 +101,18 @@ public class TopicSessionQuery {
 		
 		return (long)(obj==null?0 : obj);
 	}
+	/**
+	 * 跟新帖子的点击数
+	 */
+	
+	public void updateTopicSupports(int topicId){
+		
+		String hql =  "update CommonTopic set supports = supports+1 where  topicId = ?";
+		query.update(hql, new Object[]{topicId});
+	}
+	
+	
+	
 	
 	
 }

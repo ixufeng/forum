@@ -8,7 +8,8 @@
 	<jsp:include page="/WEB-INF/components/headIncludeFile.jsp"></jsp:include>
 	<title>创建新话题</title>
 	<script type="text/javascript" src="/forum/js/showdown.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/forum/css/newTopic.css"> 
+    <link rel="stylesheet" type="text/css" href="/forum/css/newTopic.css">
+    <link rel="stylesheet" type="text/css" href="/forum/css/webuploader.css">  
 </head>
 <body>
 	<jsp:include page="/WEB-INF/components/header.jsp"></jsp:include>
@@ -41,7 +42,15 @@
     				<div class="text-remind">
     					<span class="glyphicon glyphicon-text-height">正文</span>
     					<span class="pull-right">2000</span>
-    				</div>    				
+    				</div>
+    				<div id="send-tools">
+    					<button type="button" class="btn btn-primary  webuploader-container" id="file-pick">选择图片</button>	
+    				</div>
+    				
+    				
+   					<div id="fileList" class="uploader-list user">		
+					</div>
+    				   				
     				<textarea  id="content"  placeholder="请输入正文" rows="8" class="form-control"></textarea>
     				<textarea id="sendcontent" class="hidden" name="content"></textarea>
     				<div>
@@ -86,6 +95,8 @@
     		</div>
     	</div>
     </div>
+     
+     <script type="text/javascript" src="/forum/js/webuploader.js"></script>
      <script type="text/javascript" src="/forum/js/newTopic.js"></script>
 </body>
 </html>

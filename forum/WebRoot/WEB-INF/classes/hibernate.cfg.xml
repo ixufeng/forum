@@ -25,5 +25,6 @@
 		<mapping resource="com/forum/entityImp/CommonReply.hbm.xml"/>
 		<mapping resource="com/forum/entityImp/UserInformation.hbm.xml"/>
 		<mapping resource="com/forum/entityImp/Message.hbm.xml"/>
+		<mapping resource="com/forum/entityImp/TopicImage.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

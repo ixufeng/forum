@@ -3,7 +3,7 @@ package com.forum.loginImp;
 import java.util.List;
 
 import com.forum.daoImp.DaoFactory;
-import com.forum.daoImp.UserSessionQuery;
+import com.forum.daoImp.UserDao;
 import com.forum.entity.User;
 import com.forum.entityImp.CommonUser;
 import com.forum.login.Login;
@@ -28,7 +28,7 @@ public class CommonLoginService implements Login {
 			
 			String hql = "from CommonUser where userName=? or userEmail=?";
 			String[] params = {u.getUserName(),u.getUserName()};
-			UserSessionQuery query = DaoFactory.getInstance().getUserQuery();
+			UserDao query = DaoFactory.getInstance().getUserQuery();
 			List<Object> list = query.select(hql, params);
 			
 			if(list.size()>0){

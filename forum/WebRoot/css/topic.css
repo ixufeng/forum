@@ -57,3 +57,21 @@ html,body{
 .badge{
 	background-color:#BBB;
 }
+#topic-img{
+	list-style-type:none;
+
+}
+#topic-img>li{
+	
+	margin:-1px;
+	width:120px;
+    height:120px;
+	display: inline-block;
+	overflow:hidden;
+	background-color:black;
+	cursor:pointer;
+}
+#topic-img>li>img{
+	
+	vertical-align:middle;
+}

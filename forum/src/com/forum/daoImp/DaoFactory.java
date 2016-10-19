@@ -31,14 +31,14 @@ public class DaoFactory{
 	 * 在获取的时候实例化用户查讯类
 	 * @return
 	 */
-	public UserSessionQuery getUserQuery() {
+	public UserDao getUserQuery() {
 
-			return new UserSessionQuery();
+			return new UserDao();
 	}
 	
-	public TopicSessionQuery getTopicQuery(){
+	public TopicDao getTopicQuery(){
 		
-		return  new TopicSessionQuery();
+		return  new TopicDao();
 	}
 	
 	
